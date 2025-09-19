@@ -1,0 +1,16 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: ml-pipeline-prod # le nom de notre cluster
+  region: us-east-1 # la région, à modifier si besoin
+  version: "1.30" # la version de kubernetes utilisée
+
+iam:
+  withOIDC: true # OICD = OpenID Connect -> sécurise le cluster
+  serviceRoleARN: arn:aws:iam::216728953863:role/eksClusterRole # iam de 12 chiffres à modifier
+
+managedNodeGroups: # caractéristiques des machines qui vont tourner
+  - name: ng-on-demand
+    instanceTypes: [t3.medium] # type de machine 
+    desiredCapacity: 1 # on lance une seule machine (limite les coûts)

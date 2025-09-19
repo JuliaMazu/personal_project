@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ml-pipeline # On donne un nom à notre déploiement 
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ml-api
+  namespace: ml-pipeline
+spec:
+  replicas: 1 # nombre de copies de l'appli qui vont tourner
+  selector:
+    matchLabels: { app: ml-api } # on sélectionne bien ml-api
+  template:
+    metadata:
+      labels: { app: ml-api }
+    spec:
+      serviceAccountName: api-sa # on utilise le service account
+      containers:
+        - name: api
+          image: corbeaublanc/nutrional_agent:latest # on spécifie l'image docker, à modifier avec la votre
+          ports:
+            - containerPort: 8050 # correspond au port par défaut de FastAPI

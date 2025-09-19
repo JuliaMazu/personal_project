@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ml-api-lb
+  namespace: ml-pipeline
+spec:
+  type: LoadBalancer # Le nom du service
+  ports:
+    - port: 80 # Il s'agit du port standard http pour les requêtes web
+      targetPort: 8050 # Notre port FastAPI
+  selector:
+    app: ml-api
