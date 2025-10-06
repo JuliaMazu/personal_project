@@ -1,3 +1,12 @@
 dash==2.18.2
-gunicorn
-fastapi
+dash_bootstrap_components==2.0.4
+dash_bootstrap_templates==2.1.0
+dash_chat==0.3.0
+fastapi==0.118.0
+langchain==0.3.27
+langchain_community==0.3.30
+langchain_core==0.3.78
+langgraph==0.6.8
+pandas==2.3.3
+plotly==6.3.1
+python-dotenv==1.1.1
