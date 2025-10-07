@@ -2,12 +2,12 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: ml-pipeline-prod # le nom de notre cluster
+  name: ml-pipeline-nutrition # le nom de notre cluster
   region: us-east-1 # la région, à modifier si besoin
   version: "1.33" # la version de kubernetes utilisée
 
 iam:
-  withOIDC: true # OICD = OpenID Connect -> sécurise le cluster
+  withOIDC: true # OICD = OpenID Connect ->eksctl create cluster -f cluster.yaml  sécurise le cluster
   serviceRoleARN: arn:aws:iam::609103576748:role/eksClusterRole # iam de 12 chiffres à modifier
 
 managedNodeGroups: # caractéristiques des machines qui vont tourner

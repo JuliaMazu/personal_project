@@ -22,3 +22,7 @@ spec:
           image: corbeaublanc/nutrional_agent:latest # on spécifie l'image docker, à modifier avec la votre
           ports:
             - containerPort: 8050 # correspond au port par défaut de FastAPI
+          envFrom:
+            - secretRef:
+              # This name MUST match the metadata.name of the Secret created above
+                name: neo4j-credentials 

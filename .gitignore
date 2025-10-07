@@ -1,3 +1,4 @@
 env/
 deployment/cf-create.json
 .env
+neo4j-secret.yaml

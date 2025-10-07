@@ -11,7 +11,7 @@ from langgraph.prebuilt import ToolNode, tools_condition
 from langgraph.checkpoint.memory import MemorySaver
 
 
-load_dotenv() 
+#load_dotenv() 
 
 kg = Neo4jGraph(
     url=os.getenv("NEO4J_URI"), 
@@ -112,6 +112,7 @@ def generate(state: MessagesState):
             "5. Your answer MUST be based exclusively on the provided context. If the context is insufficient, you MUST state I dont know.\n"
             "6. Use only tools as an information source.\n"
             "7. Print ALL the sources at the end of your answer, list it with numbers, be sure to print all"
+            "8. Use only provided context as a source of data"
             "Review and meta-analysis articles data has more impact than just typical research. "
             "Use of placebo, double-blind stydies, high number of participants increase data reliability. "
             "Your response MUST be structured into clear sections using headings to cover each major topic. "
