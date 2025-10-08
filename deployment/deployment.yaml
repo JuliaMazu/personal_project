@@ -22,4 +22,40 @@ spec:
           image: corbeaublanc/nutrional_agent:latest # on spécifie l'image docker, à modifier avec la votre
           ports:
             - containerPort: 8050 # correspond au port par défaut de FastAPI
-          
+          env:
+            - name: GEMINI_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: nutrition-secrets
+                  key: GEMINI_KEY
+            - name: NEO4J_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: nutrition-secrets
+                  key: NEO4J_DATABASE
+            - name: NEO4J_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: nutrition-secrets
+                  key: NEO4J_PASSWORD
+            - name: NEO4J_URI
+              valueFrom:
+                secretKeyRef:
+                  name: nutrition-secrets
+                  key: NEO4J_URI
+            - name: NEO4J_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: nutrition-secrets
+                  key: NEO4J_USERNAME
+            - name: OPENAIENDPOINT
+              valueFrom:
+                secretKeyRef:
+                  name: nutrition-secrets
+                  key: OPENAIENDPOINT
+            - name: OPENAIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: nutrition-secrets
+                  key: OPENAIKEY
+            

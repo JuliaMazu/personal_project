@@ -26,21 +26,21 @@ origins = [
     'http://localhost:8050'          # autorise les tests locaux
 ]
 
-"""server.add_middleware(
+server.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_methods=['*'],
     allow_headers=['*'],
     max_age=3600
-)"""
+)
 
-# Define the layout of the app/Users/yulenka/Documents/data/neo4j-agent/neo4j-client/.env
+                ###layout
 app.layout = dbc.Container([
     dbc.Row([
         dbc.Col(
             html.H1("Sport NutriBites", className="text-center"),
             width=12,
-            className="py-3" # Add some vertical padding
+            className="py-3"
         )
     ], className="mb-4 mt-4 border-bottom"),
     
@@ -83,7 +83,6 @@ def handle_chat(new_message, messages, session_data):
 
     if new_message["role"] == "user":
         config = {"configurable": {"thread_id": thread_id}}
-        initial_message = HumanMessage(content=new_message["content"])
         response = graph.invoke({"messages" : [{"role": new_message["role"], 
                                   "content": new_message["content"]}]}      
                                 ,config=config)
