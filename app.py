@@ -53,7 +53,7 @@ def add_cors_headers(response):
 app.layout = dbc.Container([
     dbc.Row([
         dbc.Col(
-            html.H1("Sport NutriBites for Iuliia", className="text-center"),
+            html.H1("Sport NutriBites for Internal use", className="text-center"),
             width=12,
             className="py-3"
         )
@@ -65,7 +65,7 @@ app.layout = dbc.Container([
                     id="chat-component",
                     messages=[],
                     theme="dark",
-                    input_placeholder="Which factors affect iron absorbtion",
+                    input_placeholder="Which factors affect iron absorption",
                     container_style={"height": "60vh",
                                      "width": "50%"},
                     user_bubble_style={"background-color": "#42C4F7"},
