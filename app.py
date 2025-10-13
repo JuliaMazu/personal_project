@@ -53,7 +53,7 @@ def add_cors_headers(response):
 app.layout = dbc.Container([
     dbc.Row([
         dbc.Col(
-            html.H1("Sport NutriBites", className="text-center"),
+            html.H1("Sport NutriBites for Iuliia", className="text-center"),
             width=12,
             className="py-3"
         )

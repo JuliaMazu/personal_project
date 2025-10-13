@@ -11,4 +11,4 @@ RUN pip install -r requirements.txt
 COPY . ./
 
 # Finally, run gunicorn.
-CMD [ "gunicorn", "--workers=3", "--threads=1", "-b", "0.0.0.0:8050", "--timeout=120", "app:server"]
+CMD [ "gunicorn", "--workers=3", "--threads=1", "-b", "0.0.0.0:8050", "--timeout=2000", "app:server"]
