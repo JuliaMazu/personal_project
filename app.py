@@ -57,7 +57,6 @@ def add_cors_headers(response):
         
     return response
 
-print(os.getenv("GEMINI_IMAGE"))
 
 def image_generate(answer):
     client = genai.Client(api_key = os.getenv("GEMINI_IMAGE"))
