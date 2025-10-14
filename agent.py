@@ -161,7 +161,7 @@ graph = graph_builder.compile(checkpointer=memory)
 
 def image_generate(answer):
     client = genai.Client(api_key = api_image)
-
+    print(f"Using API key: {api_image}")
     prompt = (f"create an image of schema or an explanation of this text that summarize and improves comprehension text: {answer}")
 
     response = client.models.generate_content(
