@@ -23,7 +23,7 @@ kg = Neo4jGraph(
     password=os.getenv("NEO4J_PASSWORD"), 
     database=os.getenv("NEO4J_DATABASE")
 )
-api_image=os.getenv("GEMINI_IMAGE", "AIzaSyAjFEgGP7jV7BhYNcBW8FuT6Wpg2K9ENJM")
+api_image=os.getenv("GEMINI_IMAGE")
 
 @tool(response_format="content_and_artifact")
 def neo4j_vector_search(question):
