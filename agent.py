@@ -12,8 +12,10 @@ from langgraph.checkpoint.memory import MemorySaver
 from google import genai
 from google.genai import types
 from PIL import Image
+from io import BytesIO
 
-#load_dotenv() 
+
+load_dotenv() 
 
 kg = Neo4jGraph(
     url=os.getenv("NEO4J_URI"), 

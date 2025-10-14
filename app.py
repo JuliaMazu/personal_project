@@ -22,7 +22,7 @@ from io import BytesIO
 import base64
 
 from dotenv import load_dotenv
-#load_dotenv() 
+load_dotenv() 
 
 api_image=os.getenv("GEMINI_IMAGE")
 
@@ -73,7 +73,7 @@ chat_component = ChatComponent(
                     theme="dark",
                     input_placeholder="Which factors affect iron absorption",
                     # container_style is often better managed with className and a width on dbc.Col
-                    container_style={"height": "60vh"}, 
+                    container_style={"height": "100vh"}, 
                     user_bubble_style={"background-color": "#42C4F7"},
                     assistant_bubble_style={"background-color": "#E0E0E0"},
                     input_text_style={"background-color": "#E0E0E0"}
@@ -97,11 +97,11 @@ app.layout = dbc.Container([
             ],
             width=6   
         ),
-        dbc.Col([
-         html.Div(id='output-image-container', children=[
-        html.Img(id='generated-image-display', style={'max-width': '100%', 'border': '1px solid #ccc'})
-                ])],
-        width=6 )
+        #dbc.Col([
+        # html.Div(id='output-image-container', children=[
+        #html.Img(id='generated-image-display', style={'max-width': '100%', 'border': '1px solid #ccc'})
+        #        ])],
+        #width=6 )
         ]
     )
 ], fluid=True)
@@ -109,7 +109,7 @@ app.layout = dbc.Container([
 @app.callback(
     Output("chat-component", "messages"),
     Output("session-store", "data"),
-    Output('generated-image-display', 'src'),
+   # Output('generated-image-display', 'src'),
     Input("chat-component", "new_message"),
     State("chat-component", "messages"),
     State("session-store", "data"),
@@ -134,9 +134,9 @@ def handle_chat(new_message, messages, session_data):
                                 ,config=config)
             
         bot_response = {"role": "assistant", "content": response['messages'][-1].content}
-        pil_img = image_generate(bot_response)
-        base64_src = pil_to_base64(pil_img)
-        return updated_messages + [bot_response], session_data, base64_src
+        #pil_img = image_generate(bot_response)
+        #base64_src = pil_to_base64(pil_img)
+        return updated_messages + [bot_response], session_data #, base64_src
 
     return updated_messages, session_data
 
