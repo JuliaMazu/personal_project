@@ -28,7 +28,7 @@ from dotenv import load_dotenv
 # Initialize the Dash app
 app = Dash(__name__, external_stylesheets=[dbc.themes.ZEPHYR, dbc.icons.FONT_AWESOME])
 server = app.server
-
+print("app started")
 origins = [
     'https://JuliaMazu.github.io',  # Adresse GitHub Pages, à modifier avec votre identifiant github
     'http://localhost:8050'          # autorise les tests locaux
@@ -57,7 +57,7 @@ def add_cors_headers(response):
         
     return response
 
-
+print(os.getenv("GEMINI_IMAGE"))
 
 def image_generate(answer):
     client = genai.Client(api_key = os.getenv("GEMINI_IMAGE"))
