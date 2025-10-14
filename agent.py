@@ -9,7 +9,9 @@ from langchain_community.graphs import Neo4jGraph
 from langgraph.graph import END
 from langgraph.prebuilt import ToolNode, tools_condition
 from langgraph.checkpoint.memory import MemorySaver
-
+from google import genai
+from google.genai import types
+from PIL import Image
 
 #load_dotenv() 
 
@@ -19,6 +21,7 @@ kg = Neo4jGraph(
     password=os.getenv("NEO4J_PASSWORD"), 
     database=os.getenv("NEO4J_DATABASE")
 )
+api_image=os.getenv("GEMINI_IMAGE")
 
 @tool(response_format="content_and_artifact")
 def neo4j_vector_search(question):
@@ -151,3 +154,23 @@ graph_builder.add_edge("generate", END)
 memory = MemorySaver()
 
 graph = graph_builder.compile(checkpointer=memory)
+
+
+
+def image_generate(answer):
+    client = genai.Client(api_key = api_image)
+
+    prompt = (f"create an image of schema or an explanation of this text that summarize and improves comprehension text: {answer}")
+
+    response = client.models.generate_content(
+        model="gemini-2.5-flash-image",
+        contents=[prompt],
+    )
+
+    for part in response.candidates[0].content.parts:
+        if part.text is not None:
+            print(part.text)
+        elif part.inline_data is not None:
+            image = Image.open(BytesIO(part.inline_data.data))
+            #image.save("generated_image.png")
+    return image

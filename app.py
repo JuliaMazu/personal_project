@@ -11,7 +11,7 @@ import plotly.graph_objects as go
 import plotly.io as pio
 import dash_bootstrap_components as dbc
 from dash_bootstrap_templates import load_figure_template
-from agent import graph
+from agent import graph, image_generate
 from langchain_core.runnables import RunnableConfig
 from langchain_core.messages import HumanMessage
 
@@ -24,11 +24,11 @@ import base64
 from dotenv import load_dotenv
 #load_dotenv() 
 
+api_image=os.getenv("GEMINI_IMAGE")
 
 # Initialize the Dash app
 app = Dash(__name__, external_stylesheets=[dbc.themes.ZEPHYR, dbc.icons.FONT_AWESOME])
 server = app.server
-api_image=os.getenv("GEMINI_IMAGE")
 origins = [
     'https://JuliaMazu.github.io',  # Adresse GitHub Pages, à modifier avec votre identifiant github
     'http://localhost:8050'          # autorise les tests locaux
@@ -58,23 +58,7 @@ def add_cors_headers(response):
     return response
 
 
-def image_generate(answer):
-    client = genai.Client(api_key = api_image)
 
-    prompt = (f"create an image of schema or an explanation of this text that summarize and improves comprehension text: {answer}")
-
-    response = client.models.generate_content(
-        model="gemini-2.5-flash-image",
-        contents=[prompt],
-    )
-
-    for part in response.candidates[0].content.parts:
-        if part.text is not None:
-            print(part.text)
-        elif part.inline_data is not None:
-            image = Image.open(BytesIO(part.inline_data.data))
-            #image.save("generated_image.png")
-    return image
 
 def pil_to_base64(img):
     """Converts a PIL Image object to a base64 string for Dash display."""
