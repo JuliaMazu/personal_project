@@ -2,7 +2,7 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: ml-pipeline-nutrition # le nom de notre cluster
+  name: ml-nutrition-pipeline # le nom de notre cluster
   region: us-east-1 # la région, à modifier si besoin
   version: "1.33" # la version de kubernetes utilisée
 

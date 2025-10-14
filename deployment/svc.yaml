@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ml-api-lb
-  namespace: ml-pipeline
+  namespace: ml-nutrition-pipeline
 spec:
   type: LoadBalancer # Le nom du service
   ports:

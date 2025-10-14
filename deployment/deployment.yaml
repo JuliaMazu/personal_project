@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: ml-pipeline # On donne un nom à notre déploiement 
+  name: ml-nutrition-pipeline # On donne un nom à notre déploiement 
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ml-api
-  namespace: ml-pipeline
+  namespace: ml-nutrition-pipeline
 spec:
   replicas: 1 # nombre de copies de l'appli qui vont tourner
   selector:
