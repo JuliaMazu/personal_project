@@ -61,6 +61,5 @@ spec:
             - name: GEMINI_IMAGE
               valueFrom:
                 secretKeyRef:
-                  name: image
+                  name: nutrition-secrets
                   key: GEMINI_IMAGE
-            
